@@ -22,7 +22,7 @@ public class ParkingLotTest {
 
 
     @Test
-    void should_parking_boy_returns_ticket_when_park_car_to_available_parking_lot() throws NotEnoughParkingSlotException {
+    void should_parking_lot_returns_ticket_when_park_car_to_available_parking_lot() throws NotEnoughParkingSlotException {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
@@ -33,7 +33,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_parking_boy_throws_exception_when_park_car_given_full_parking_lot() throws NotEnoughParkingSlotException {
+    void should_parking_lot_throws_exception_when_park_car_given_full_parking_lot() throws NotEnoughParkingSlotException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -47,7 +47,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_parking_boy_returns_same_car_given_ticket_of_parked_car() throws UnrecognizedParkingTicketException, NotEnoughParkingSlotException {
+    void should_parking_lot_returns_same_car_given_ticket_of_parked_car() throws UnrecognizedParkingTicketException, NotEnoughParkingSlotException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -59,7 +59,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_parking_boy_returns_multiple_tickets_given_available_parking_lot_and_multiple_cars() throws NotEnoughParkingSlotException {
+    void should_parking_lot_returns_multiple_tickets_given_available_parking_lot_and_multiple_cars() throws NotEnoughParkingSlotException {
         //given
         ParkingLot parkingLot = new ParkingLot();
         List<Car> carList = new ArrayList<>();
@@ -80,7 +80,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_parking_boy_returns_one_tickets_given_parking_lot_with_1_slot_and_multiple_cars() throws NotEnoughParkingSlotException {
+    void should_parking_lot_returns_one_tickets_given_parking_lot_with_1_slot_and_multiple_cars() throws NotEnoughParkingSlotException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         List<Car> carList = new ArrayList<>();
@@ -100,7 +100,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_parking_boy_returns_correct_exception_given_used_ticket() throws UnrecognizedParkingTicketException, NotEnoughParkingSlotException {
+    void should_parking_lot_returns_correct_exception_given_used_ticket() throws UnrecognizedParkingTicketException, NotEnoughParkingSlotException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
@@ -114,7 +114,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_parking_boy_returns_correct_exception_given_fake_ticket() {
+    void should_parking_lot_returns_correct_exception_given_fake_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Ticket fakeTicket = new Ticket();
