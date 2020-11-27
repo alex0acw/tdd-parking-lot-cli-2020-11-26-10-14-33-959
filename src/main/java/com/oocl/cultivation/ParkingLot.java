@@ -11,6 +11,7 @@ public class ParkingLot {
         this.capacity = 10;
     }
 
-    public void park() {
+    public Ticket park(Car car) {
+        return null;
     }
 }

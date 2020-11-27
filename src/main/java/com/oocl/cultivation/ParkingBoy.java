@@ -12,6 +12,6 @@ public class ParkingBoy {
     }
 
     public void park(Car car) {
-        this.parkingLot.park();
+        this.parkingLot.park(car);
     }
 }

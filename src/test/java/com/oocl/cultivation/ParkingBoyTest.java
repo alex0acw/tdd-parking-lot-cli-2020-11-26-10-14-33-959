@@ -16,6 +16,6 @@ class ParkingBoyTest {
         Car car = new Car();
         //when
         parkingBoy.park(car);
-        verify(parkingLot,times(1)).park();
+        verify(parkingLot,times(1)).park(car);
     }
 }
