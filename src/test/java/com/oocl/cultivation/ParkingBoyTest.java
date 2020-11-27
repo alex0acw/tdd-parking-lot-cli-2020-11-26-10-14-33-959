@@ -33,4 +33,23 @@ class ParkingBoyTest {
         assertEquals(car, actual);
     }
 
+    @Test
+    void should_parking_boy_returns_same_cars_given_2_car_and_2_parking_lots_with_1_slot() throws NotEnoughParkingSlotException, UnrecognizedParkingTicketException {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        parkingBoy.addParkingLot(parkingLot2);
+        Car car = new Car();
+        Car car2 = new Car();
+        Ticket ticket = parkingBoy.park(car);
+        Ticket ticket2 = parkingBoy.park(car2);
+        //when
+        Car actual = parkingBoy.getCarByTicket(ticket);
+        Car actual2 = parkingBoy.getCarByTicket(ticket);
+        //then
+        assertEquals(car, actual);
+        assertEquals(car2, actual2);
+
+    }
 }

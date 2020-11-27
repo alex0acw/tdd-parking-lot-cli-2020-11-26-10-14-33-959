@@ -14,4 +14,7 @@ public class ParkingBoy {
     public Car getCarByTicket(Ticket ticket) throws UnrecognizedParkingTicketException {
         return parkingLot.getCarByTicket(ticket);
     }
+
+    public void addParkingLot(ParkingLot parkingLot2) {
+    }
 }
