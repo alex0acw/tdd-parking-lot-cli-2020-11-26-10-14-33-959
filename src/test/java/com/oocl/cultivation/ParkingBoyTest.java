@@ -16,6 +16,19 @@ class ParkingBoyTest {
         Car car = new Car();
         //when
         parkingBoy.park(car);
-        verify(parkingLot,times(1)).park(car);
+        //then
+        verify(parkingLot, times(1)).park(car);
+    }
+
+    @Test
+    void should_parking_boy_returns_ticket_when_park_car_to_available_parking_lot() {
+        //given
+        ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        //when
+        Ticket actual = parkingBoy.park(car);
+        //then
+        assertNotNull(actual);
     }
 }

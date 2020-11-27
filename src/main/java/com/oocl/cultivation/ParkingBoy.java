@@ -11,7 +11,8 @@ public class ParkingBoy {
         return null;
     }
 
-    public void park(Car car) {
+    public Ticket park(Car car) {
         this.parkingLot.park(car);
+        return null;
     }
 }
