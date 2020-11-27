@@ -27,6 +27,6 @@ public class ParkingLot {
     }
 
     public Car getCarByTicket(Ticket ticket) {
-        return this.ticketCarMap.get(ticket);
+        return this.ticketCarMap.remove(ticket);
     }
 }
