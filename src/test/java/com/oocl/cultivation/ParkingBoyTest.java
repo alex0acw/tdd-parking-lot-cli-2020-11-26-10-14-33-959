@@ -3,8 +3,7 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -45,5 +44,18 @@ class ParkingBoyTest {
         Ticket actual = parkingBoy.park(car);
         //then
         assertNull(actual);
+    }
+
+    @Test
+    void should_parking_boy_returns_same_car_given_ticket_of_parked_car() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+        //when
+        Car actual = parkingBoy.getCarByTicket(ticket);
+        //then
+        assertEquals(car, actual);
     }
 }
