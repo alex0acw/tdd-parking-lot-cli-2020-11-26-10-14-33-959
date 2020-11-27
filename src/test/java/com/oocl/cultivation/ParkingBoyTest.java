@@ -3,6 +3,10 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -57,5 +61,23 @@ class ParkingBoyTest {
         Car actual = parkingBoy.getCarByTicket(ticket);
         //then
         assertEquals(car, actual);
+    }
+
+    @Test
+    void should_parking_boy_returns_multiple_tickets_given_available_parking_lot_and_multiple_cars() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            carList.add(new Car());
+        }
+        //when
+        List<Ticket> actualTickets =
+                carList.stream().map(parkingBoy::park).collect(Collectors.toList());
+        //then
+        for (Ticket actualTicket : actualTickets) {
+            assertNotEquals(null, actualTicket);
+        }
     }
 }
