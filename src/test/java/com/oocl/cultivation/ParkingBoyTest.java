@@ -99,4 +99,18 @@ class ParkingBoyTest {
             assertNull(actualTickets.get(i));
         }
     }
+
+    @Test
+    void should_parking_boy_returns_null_given_used_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+        parkingBoy.getCarByTicket(ticket);
+        //when
+        Car actual = parkingBoy.getCarByTicket(ticket);
+        //then
+        assertNull(actual);
+    }
 }
