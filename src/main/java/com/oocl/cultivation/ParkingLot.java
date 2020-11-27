@@ -17,13 +17,13 @@ public class ParkingLot {
         ticketCarMap = new HashMap<>();
     }
 
-    public Ticket park(Car car) {
+    public Ticket park(Car car) throws NotEnoughParkingSlotException {
         if (capacity - ticketCarMap.size() > 0) {
             Ticket ticket = new Ticket();
             this.ticketCarMap.put(ticket, car);
             return ticket;
         }
-        return null;
+        throw new NotEnoughParkingSlotException();
     }
 
     public Car getCarByTicket(Ticket ticket) throws UnrecognizedParkingTicketException {

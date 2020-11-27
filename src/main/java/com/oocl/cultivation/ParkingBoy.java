@@ -7,7 +7,7 @@ public class ParkingBoy {
         this.parkingLot = parkingLot;
     }
 
-    public Ticket park(Car car) {
+    public Ticket park(Car car) throws NotEnoughParkingSlotException {
         return parkingLot.park(car);
     }
 

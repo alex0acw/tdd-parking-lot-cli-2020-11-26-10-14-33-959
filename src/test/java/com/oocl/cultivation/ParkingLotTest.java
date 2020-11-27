@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class ParkingLotTest {
 
     @Test
-    void should_return_ticket_when_request_parking_to_available_parking_lot() {
+    void should_return_ticket_when_request_parking_to_available_parking_lot() throws NotEnoughParkingSlotException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
