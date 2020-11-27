@@ -101,7 +101,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_boy_returns_null_given_used_ticket() {
+    void should_parking_boy_returns_correct_exception_given_used_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -109,20 +109,23 @@ class ParkingBoyTest {
         Ticket ticket = parkingBoy.park(car);
         parkingBoy.getCarByTicket(ticket);
         //when
-        Car actual = parkingBoy.getCarByTicket(ticket);
+        Exception actual = assertThrows(UnrecognizedParkingTicket.class,
+                () -> parkingBoy.getCarByTicket(ticket));
         //then
-        assertNull(actual);
+        assertEquals("Unrecognized parking ticket.", actual.getMessage());
     }
 
     @Test
-    void should_parking_boy_returns_null_given_fake_ticket() {
+    void should_parking_boy_returns_correct_exception_given_fake_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Ticket fakeTicket = new Ticket();
         //when
-        Car actual = parkingBoy.getCarByTicket(fakeTicket);
+        Exception actual = assertThrows(UnrecognizedParkingTicket.class, () ->
+                parkingBoy.getCarByTicket(fakeTicket)
+        );
         //then
-        assertNull(actual);
+        assertEquals("Unrecognized parking ticket.", actual.getMessage());
     }
 }
