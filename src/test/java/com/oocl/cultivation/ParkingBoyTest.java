@@ -23,7 +23,7 @@ class ParkingBoyTest {
     @Test
     void should_parking_boy_returns_ticket_when_park_car_to_available_parking_lot() {
         //given
-        ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
+        ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         //when
