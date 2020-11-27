@@ -37,7 +37,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_boy_returns_null_when_park_car_given_full_parking_lot() {
+    void should_parking_boy_throws_exception_when_park_car_given_full_parking_lot() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -45,9 +45,10 @@ class ParkingBoyTest {
         Car car2 = new Car();
         parkingBoy.park(car2);
         //when
-        Ticket actual = parkingBoy.park(car);
+        Exception actual = assertThrows(UnrecognizedParkingTicketException.class,
+                () -> parkingBoy.park(car));
         //then
-        assertNull(actual);
+        assertEquals("Not enough position.", actual.getMessage());
     }
 
     @Test
@@ -91,12 +92,14 @@ class ParkingBoyTest {
             carList.add(new Car());
         }
         //when
-        List<Ticket> actualTickets =
-                carList.stream().map(parkingBoy::park).collect(Collectors.toList());
         //then
-        assertNotEquals(null, actualTickets.get(0));
-        for (int i = 1; i < actualTickets.size(); i++) {
-            assertNull(actualTickets.get(i));
+        Ticket actualFirstTicket = parkingBoy.park(carList.get(0));
+        assertNotNull(actualFirstTicket);
+        for (int i = 1; i < carList.size(); i++) {
+            int finalI = i;
+            Exception actual = assertThrows(NotEnoughParkingSlotException.class,
+                    () -> parkingBoy.park(carList.get(finalI)));
+            assertEquals("Not enough position.", actual.getMessage());
         }
     }
 
