@@ -80,4 +80,23 @@ class ParkingBoyTest {
             assertNotEquals(null, actualTicket);
         }
     }
+
+    @Test
+    void should_parking_boy_returns_one_tickets_given_parking_lot_with_1_slot_and_multiple_cars() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        List<Car> carList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            carList.add(new Car());
+        }
+        //when
+        List<Ticket> actualTickets =
+                carList.stream().map(parkingBoy::park).collect(Collectors.toList());
+        //then
+        assertNotEquals(null, actualTickets.get(0));
+        for (int i = 1; i < actualTickets.size(); i++) {
+            assertNull(actualTickets.get(i));
+        }
+    }
 }
