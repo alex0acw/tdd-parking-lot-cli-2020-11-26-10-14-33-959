@@ -1,27 +1,32 @@
 package com.oocl.cultivation;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ParkingLot {
     private final int capacity;
-    private final List<Car> carList;
+    private final Map<Ticket, Car> ticketCarMap;
 
     public ParkingLot(int capacity) {
         this.capacity = capacity;
-        carList = new ArrayList<>();
+        ticketCarMap = new HashMap<>();
     }
 
     public ParkingLot() {
         this.capacity = 10;
-        carList = new ArrayList<>();
+        ticketCarMap = new HashMap<>();
     }
 
     public Ticket park(Car car) {
-        if (capacity - carList.size() > 0) {
-            this.carList.add(car);
-            return new Ticket();
-        } else
-            return null;
+        if (capacity - ticketCarMap.size() > 0) {
+            Ticket ticket = new Ticket();
+            this.ticketCarMap.put(ticket, car);
+            return ticket;
+        }
+        return null;
+    }
+
+    public Car getCarByTicket(Ticket ticket) {
+        return this.ticketCarMap.get(ticket);
     }
 }

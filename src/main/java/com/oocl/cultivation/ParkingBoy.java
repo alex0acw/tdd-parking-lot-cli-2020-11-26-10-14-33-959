@@ -12,6 +12,6 @@ public class ParkingBoy {
     }
 
     public Car getCarByTicket(Ticket ticket) {
-        return null;
+        return parkingLot.getCarByTicket(ticket);
     }
 }
