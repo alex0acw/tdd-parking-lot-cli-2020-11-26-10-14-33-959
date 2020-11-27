@@ -34,11 +34,13 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_boy_returns_null_when_park_car_to_full_parking_lot() {
+    void should_parking_boy_returns_null_when_park_car_given_full_parking_lot() {
         //given
-        ParkingLot parkingLot = new ParkingLot(0);
+        ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
+        Car car2 = new Car();
+        parkingBoy.park(car2);
         //when
         Ticket actual = parkingBoy.park(car);
         //then
