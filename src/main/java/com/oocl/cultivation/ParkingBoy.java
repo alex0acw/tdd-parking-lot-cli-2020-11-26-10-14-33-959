@@ -7,12 +7,7 @@ public class ParkingBoy {
         this.parkingLot = parkingLot;
     }
 
-    public Ticket requestParking(Car car) {
-        return null;
-    }
-
     public Ticket park(Car car) {
-        this.parkingLot.park(car);
-        return null;
+        return parkingLot.park(car);
     }
 }
