@@ -26,7 +26,11 @@ public class ParkingLot {
         return null;
     }
 
-    public Car getCarByTicket(Ticket ticket) {
-        return this.ticketCarMap.remove(ticket);
+    public Car getCarByTicket(Ticket ticket) throws UnrecognizedParkingTicketException {
+        Car car = this.ticketCarMap.remove(ticket);
+        if (car == null)
+            throw new UnrecognizedParkingTicketException();
+        else
+            return car;
     }
 }

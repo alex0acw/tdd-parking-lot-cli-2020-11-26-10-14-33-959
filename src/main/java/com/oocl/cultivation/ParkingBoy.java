@@ -11,7 +11,7 @@ public class ParkingBoy {
         return parkingLot.park(car);
     }
 
-    public Car getCarByTicket(Ticket ticket) {
+    public Car getCarByTicket(Ticket ticket) throws UnrecognizedParkingTicketException {
         return parkingLot.getCarByTicket(ticket);
     }
 }

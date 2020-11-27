@@ -51,7 +51,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_boy_returns_same_car_given_ticket_of_parked_car() {
+    void should_parking_boy_returns_same_car_given_ticket_of_parked_car() throws UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -101,7 +101,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_boy_returns_correct_exception_given_used_ticket() {
+    void should_parking_boy_returns_correct_exception_given_used_ticket() throws UnrecognizedParkingTicketException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -109,7 +109,7 @@ class ParkingBoyTest {
         Ticket ticket = parkingBoy.park(car);
         parkingBoy.getCarByTicket(ticket);
         //when
-        Exception actual = assertThrows(UnrecognizedParkingTicket.class,
+        Exception actual = assertThrows(UnrecognizedParkingTicketException.class,
                 () -> parkingBoy.getCarByTicket(ticket));
         //then
         assertEquals("Unrecognized parking ticket.", actual.getMessage());
@@ -122,7 +122,7 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Ticket fakeTicket = new Ticket();
         //when
-        Exception actual = assertThrows(UnrecognizedParkingTicket.class, () ->
+        Exception actual = assertThrows(UnrecognizedParkingTicketException.class, () ->
                 parkingBoy.getCarByTicket(fakeTicket)
         );
         //then
