@@ -3,6 +3,7 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SuperSmartParkingBoyTest {
 
@@ -22,5 +23,21 @@ public class SuperSmartParkingBoyTest {
         Car actual = relativelyMoreSpaceParkingLot.getCarByTicket(ticket);
         //then
         assertEquals(car, actual);
+    }
+
+    @Test
+    void should_super_smart_parking_throw_exception_given_parking_lots_with_no_spaces() throws NotEnoughParkingSlotException {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        parkingLot.park(new Car());
+        parkingLot1.park(new Car());
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLot);
+        superSmartParkingBoy.addParkingLot(parkingLot1);
+
+        //when
+        //then
+        NotEnoughParkingSlotException actual = assertThrows(NotEnoughParkingSlotException.class, () -> superSmartParkingBoy.park(new Car()));
+        assertEquals("Not enough position.", actual.getMessage());
     }
 }
