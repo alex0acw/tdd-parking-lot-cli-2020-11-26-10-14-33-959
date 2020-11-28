@@ -49,4 +49,14 @@ public class ParkingManagerTest {
         assertEquals(car, actualCar);
         assertNotNull(actualTicket);
     }
+
+    @Test
+    void should_manager_fail_when_park_or_fetch_car_like_normal_parking_boy() {
+        //given
+        ParkingManager parkingManager = new ParkingManager(new ParkingLot(0));
+        //when
+        //then
+        assertThrows(NotEnoughParkingSlotException.class, () -> parkingManager.park(new Car()));
+        assertThrows(UnrecognizedParkingTicketException.class, () -> parkingManager.getCarByTicket(new Ticket()));
+    }
 }
