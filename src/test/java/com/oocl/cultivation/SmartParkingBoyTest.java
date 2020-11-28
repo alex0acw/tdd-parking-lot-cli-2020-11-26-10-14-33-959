@@ -21,4 +21,20 @@ public class SmartParkingBoyTest {
         //then
         assertEquals(car, actual);
     }
+
+    @Test
+    void should_smart_parking_throw_exception_given_parking_lots_with_no_spaces() throws NotEnoughParkingSlotException {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        parkingLot.park(new Car());
+        parkingLot1.park(new Car());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        smartParkingBoy.addParkingLot(parkingLot1);
+
+        //when
+        //then
+        NotEnoughParkingSlotException actual = assertThrows(NotEnoughParkingSlotException.class, () -> smartParkingBoy.park(new Car()));
+        assertEquals("Not enough position.", actual.getMessage());
+    }
 }
