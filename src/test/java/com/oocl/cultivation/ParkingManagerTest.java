@@ -59,4 +59,16 @@ public class ParkingManagerTest {
         assertThrows(NotEnoughParkingSlotException.class, () -> parkingManager.park(new Car()));
         assertThrows(UnrecognizedParkingTicketException.class, () -> parkingManager.getCarByTicket(new Ticket()));
     }
+
+    @Test
+    void should_manager_throw_exceptions_when_managed_parking_boy_fails() {
+        //given
+        ParkingManager parkingManager = new ParkingManager(new ParkingLot(0));
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(0));
+        parkingManager.manage(parkingBoy);
+        //when
+        //then
+        assertThrows(NotEnoughParkingSlotException.class, () -> parkingManager.park(parkingBoy, new Car()));
+        assertThrows(UnrecognizedParkingTicketException.class, () -> parkingManager.getCarByTicket(parkingBoy, new Ticket()));
+    }
 }
