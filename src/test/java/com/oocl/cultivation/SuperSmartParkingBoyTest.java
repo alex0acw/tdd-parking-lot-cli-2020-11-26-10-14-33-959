@@ -13,7 +13,7 @@ public class SuperSmartParkingBoyTest {
         parkingLot.park(new Car());
         ParkingLot relativelyMoreSpaceParkingLot = new ParkingLot(1);
 
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLot);
         superSmartParkingBoy.addParkingLot(relativelyMoreSpaceParkingLot);
         Car car = new Car();
 

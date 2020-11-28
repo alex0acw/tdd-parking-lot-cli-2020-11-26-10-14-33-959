@@ -37,4 +37,8 @@ public class ParkingLot {
     public Integer getRemainingSpaces() {
         return this.capacity - this.ticketCarMap.size();
     }
+
+    public float getAvailableProportion() {
+        return (float) (capacity - this.ticketCarMap.size()) / capacity;
+    }
 }
