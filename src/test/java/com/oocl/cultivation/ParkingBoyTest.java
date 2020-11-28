@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -50,6 +51,25 @@ class ParkingBoyTest {
         //then
         assertEquals(car, actual);
         assertEquals(car2, actual2);
+    }
 
+    @Test
+    void should_parking_boy_returns_exception_when_park_cars_to_full_parking_lots() throws NotEnoughParkingSlotException, UnrecognizedParkingTicketException {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        parkingBoy.addParkingLot(parkingLot2);
+        Car car = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        //when
+        parkingBoy.park(car);
+        parkingBoy.park(car2);
+
+        Exception actual = assertThrows(NotEnoughParkingSlotException.class,
+                () -> parkingBoy.park(car3));
+        //then
+        assertEquals("Not enough position.", actual.getMessage());
     }
 }
