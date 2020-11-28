@@ -46,7 +46,7 @@ class ParkingBoyTest {
         Ticket ticket2 = parkingBoy.park(car2);
         //when
         Car actual = parkingBoy.getCarByTicket(ticket);
-        Car actual2 = parkingBoy.getCarByTicket(ticket);
+        Car actual2 = parkingBoy.getCarByTicket(ticket2);
         //then
         assertEquals(car, actual);
         assertEquals(car2, actual2);
