@@ -25,7 +25,7 @@ public class ParkingBoy {
         return ticket;
     }
 
-    public Car getCarByTicket(Ticket ticket) {
+    public Car getCarByTicket(Ticket ticket) throws UnrecognizedParkingTicketException {
         Car car = null;
         for (ParkingLot parkingLot : this.parkingLotList) {
             try {
@@ -34,6 +34,8 @@ public class ParkingBoy {
             } catch (UnrecognizedParkingTicketException ignored) {
             }
         }
+        if (car == null)
+            throw new UnrecognizedParkingTicketException();
         return car;
     }
 

@@ -57,7 +57,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_boy_returns_exception_when_park_cars_to_full_parking_lots() throws NotEnoughParkingSlotException, UnrecognizedParkingTicketException {
+    void should_parking_boy_returns_exception_when_park_cars_to_full_parking_lots() throws NotEnoughParkingSlotException {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
@@ -77,7 +77,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_parking_boy_returns_exception_when_got_invalid_ticket_given_multiple_parking_lots() throws NotEnoughParkingSlotException, UnrecognizedParkingTicketException {
+    void should_parking_boy_returns_exception_when_got_invalid_ticket_given_multiple_parking_lots() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
