@@ -1,7 +1,7 @@
-package com.oocl.cultivation;
+package com.oocl.cultivation.exceptions;
 
 public class NotEnoughParkingSlotException extends Exception {
-    NotEnoughParkingSlotException(){
+    public NotEnoughParkingSlotException() {
         super("Not enough position.");
     }
 }

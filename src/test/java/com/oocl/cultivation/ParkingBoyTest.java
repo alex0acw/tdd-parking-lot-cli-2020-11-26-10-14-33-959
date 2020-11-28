@@ -1,12 +1,12 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exceptions.NotEnoughParkingSlotException;
+import com.oocl.cultivation.exceptions.UnrecognizedParkingTicketException;
+import com.oocl.cultivation.parkingBoys.ParkingBoy;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 class ParkingBoyTest {
     @Test

@@ -1,4 +1,4 @@
-package com.oocl.cultivation.PickParkingLotStrategies;
+package com.oocl.cultivation.pickParkingLotStrategies;
 
 import com.oocl.cultivation.ParkingLot;
 

@@ -1,7 +1,12 @@
-package com.oocl.cultivation;
+package com.oocl.cultivation.parkingBoys;
 
-import com.oocl.cultivation.PickParkingLotStrategies.PickParkingLotStrategyInterface;
-import com.oocl.cultivation.PickParkingLotStrategies.SequentialStrategy;
+import com.oocl.cultivation.Car;
+import com.oocl.cultivation.ParkingLot;
+import com.oocl.cultivation.Ticket;
+import com.oocl.cultivation.exceptions.NotEnoughParkingSlotException;
+import com.oocl.cultivation.exceptions.UnrecognizedParkingTicketException;
+import com.oocl.cultivation.pickParkingLotStrategies.PickParkingLotStrategyInterface;
+import com.oocl.cultivation.pickParkingLotStrategies.SequentialStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
