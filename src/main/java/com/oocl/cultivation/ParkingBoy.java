@@ -11,7 +11,7 @@ public class ParkingBoy {
         this.parkingLotList.add(parkingLot);
     }
 
-    public Ticket park(Car car) {
+    public Ticket park(Car car) throws NotEnoughParkingSlotException {
         Ticket ticket = null;
         for (ParkingLot parkingLot : this.parkingLotList) {
             try {
@@ -20,6 +20,8 @@ public class ParkingBoy {
             } catch (NotEnoughParkingSlotException ignored) {
             }
         }
+        if (ticket == null)
+            throw new NotEnoughParkingSlotException();
         return ticket;
     }
 

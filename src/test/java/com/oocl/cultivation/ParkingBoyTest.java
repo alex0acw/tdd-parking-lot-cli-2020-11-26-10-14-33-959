@@ -16,7 +16,10 @@ class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
         //when
-        parkingBoy.park(car);
+        try {
+            parkingBoy.park(car);
+        } catch (NotEnoughParkingSlotException ignored) {
+        }
         //then
         verify(parkingLot, times(1)).park(car);
     }
