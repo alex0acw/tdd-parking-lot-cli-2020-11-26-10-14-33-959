@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 public class ParkingManagerTest {
@@ -22,5 +23,20 @@ public class ParkingManagerTest {
         Car actual = parkingManager.getCarByTicket(parkingBoy, ticket);
         //then
         assertEquals(car, actual);
+    }
+
+    @Test
+    void should_manager_not_park_nor_fetch_when_specified_parking_boy_not_managed() throws NotEnoughParkingSlotException, UnrecognizedParkingTicketException {
+        //given
+        ParkingManager parkingManager = new ParkingManager();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingManager.manage(new ParkingBoy(parkingLot));
+        Ticket ticket = parkingLot.park(new Car());
+        //when
+        Ticket actualTicket = parkingManager.park(new ParkingBoy(parkingLot), new Car());
+        Car actualCar = parkingManager.getCarByTicket(new ParkingBoy(parkingLot), ticket);
+        //then
+        assertNull(actualCar);
+        assertNull(actualTicket);
     }
 }
