@@ -1,13 +1,17 @@
 package com.oocl.cultivation;
 
-public class SmartParkingBoy {
+import java.util.Comparator;
+import java.util.Optional;
+
+public class SmartParkingBoy extends ParkingBoy {
     public SmartParkingBoy(ParkingLot parkingLot) {
+        super(parkingLot);
     }
 
-    public void addParkingLot(ParkingLot parkingLot2) {
-    }
-
-    public Ticket park(Car car) {
-        return null;
+    public Ticket park(Car car) throws NotEnoughParkingSlotException {
+        Optional<ParkingLot> preferredParkingLot = this.parkingLotList.stream().max(Comparator.comparingInt(ParkingLot::getRemainingSpaces));
+        if (preferredParkingLot.isPresent())
+            return preferredParkingLot.get().park(car);
+        else return null;
     }
 }

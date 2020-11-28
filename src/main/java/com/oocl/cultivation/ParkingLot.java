@@ -33,4 +33,8 @@ public class ParkingLot {
         else
             return car;
     }
+
+    public Integer getRemainingSpaces() {
+        return this.capacity - this.ticketCarMap.size();
+    }
 }
