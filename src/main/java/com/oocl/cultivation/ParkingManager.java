@@ -6,7 +6,7 @@ import java.util.Set;
 public class ParkingManager {
     private final Set<ParkingBoy> parkingBoys;
 
-    public ParkingManager() {
+    public ParkingManager(ParkingLot parkingLot) {
         parkingBoys = new HashSet<>();
     }
 
@@ -25,6 +25,14 @@ public class ParkingManager {
         if (this.parkingBoys.contains(parkingBoy)) {
             return parkingBoy.getCarByTicket(ticket);
         }
+        return null;
+    }
+
+    public Ticket park(Car car) {
+        return null;
+    }
+
+    public Car getCarByTicket(Ticket actualTicket) {
         return null;
     }
 }
