@@ -9,7 +9,7 @@ import static org.mockito.Mockito.*;
 public class ParkingManagerTest {
 
     @Test
-    void should_manager_park_and_fetch_with_specified_managed_parking_boy_park_when_being_asked_to_park_given_multiple_parking_boys() {
+    void should_manager_park_and_fetch_with_specified_managed_parking_boy_park_when_being_asked_to_park_given_multiple_parking_boys() throws NotEnoughParkingSlotException, UnrecognizedParkingTicketException {
         //given
         ParkingManager parkingManager = new ParkingManager();
         ParkingLot parkingLot = new ParkingLot();
