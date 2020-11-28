@@ -38,7 +38,7 @@ public class ParkingManagerTest {
     }
 
     @Test
-    void should_manager_park_or_fetch_car_like_normal_parking_boy() {
+    void should_manager_park_or_fetch_car_like_normal_parking_boy() throws NotEnoughParkingSlotException, UnrecognizedParkingTicketException {
         //given
         ParkingManager parkingManager = new ParkingManager(new ParkingLot());
         Car car = new Car();

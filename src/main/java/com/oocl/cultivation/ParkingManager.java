@@ -3,10 +3,11 @@ package com.oocl.cultivation;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ParkingManager {
+public class ParkingManager extends ParkingBoy {
     private final Set<ParkingBoy> parkingBoys;
 
     public ParkingManager(ParkingLot parkingLot) {
+        super(parkingLot);
         parkingBoys = new HashSet<>();
     }
 
@@ -28,11 +29,4 @@ public class ParkingManager {
         return null;
     }
 
-    public Ticket park(Car car) {
-        return null;
-    }
-
-    public Car getCarByTicket(Ticket actualTicket) {
-        return null;
-    }
 }
