@@ -75,4 +75,21 @@ class ParkingBoyTest {
         //then
         assertEquals("Not enough position.", actual.getMessage());
     }
+
+    @Test
+    void should_parking_boy_returns_exception_when_got_invalid_ticket_given_multiple_parking_lots() throws NotEnoughParkingSlotException, UnrecognizedParkingTicketException {
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        parkingBoy.addParkingLot(parkingLot2);
+        Ticket invalidTicket = new Ticket();
+
+        //when
+        Exception actual = assertThrows(UnrecognizedParkingTicketException.class,
+                () -> parkingBoy.getCarByTicket(invalidTicket));
+
+        //then
+        assertEquals("Unrecognized parking ticket.", actual.getMessage());
+    }
 }
