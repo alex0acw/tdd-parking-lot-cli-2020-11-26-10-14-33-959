@@ -7,21 +7,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private final int capacity;
+    private final int CAPACITY;
     private final Map<Ticket, Car> ticketCarMap;
 
-    public ParkingLot(int capacity) {
-        this.capacity = capacity;
+    public ParkingLot(int CAPACITY) {
+        this.CAPACITY = CAPACITY;
         ticketCarMap = new HashMap<>();
     }
 
     public ParkingLot() {
-        this.capacity = 10;
+        this.CAPACITY = 10;
         ticketCarMap = new HashMap<>();
     }
 
     public Ticket park(Car car) throws NotEnoughParkingSlotException {
-        if (capacity - ticketCarMap.size() > 0) {
+        if (CAPACITY - ticketCarMap.size() > 0) {
             Ticket ticket = new Ticket();
             this.ticketCarMap.put(ticket, car);
             return ticket;
@@ -38,10 +38,10 @@ public class ParkingLot {
     }
 
     public Integer getRemainingSpaces() {
-        return this.capacity - this.ticketCarMap.size();
+        return this.CAPACITY - this.ticketCarMap.size();
     }
 
     public float getAvailableProportion() {
-        return (float) (capacity - this.ticketCarMap.size()) / capacity;
+        return (float) (CAPACITY - this.ticketCarMap.size()) / CAPACITY;
     }
 }
