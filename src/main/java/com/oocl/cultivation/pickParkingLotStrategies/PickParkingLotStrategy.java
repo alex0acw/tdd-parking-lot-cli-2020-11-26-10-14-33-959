@@ -4,6 +4,6 @@ import com.oocl.cultivation.ParkingLot;
 
 import java.util.List;
 
-public interface PickParkingLotStrategyInterface {
+public interface PickParkingLotStrategy {
     ParkingLot pickParkingLot(List<ParkingLot> parkingLotList);
 }

@@ -6,7 +6,7 @@ import com.oocl.cultivation.exceptions.UnrecognizedParkingTicketException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLot {
+public class ParkingLot implements ParkingEntity {
     private final int CAPACITY;
     private final Map<Ticket, Car> ticketCarMap;
 

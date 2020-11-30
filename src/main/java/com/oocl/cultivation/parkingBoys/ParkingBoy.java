@@ -1,19 +1,20 @@
 package com.oocl.cultivation.parkingBoys;
 
 import com.oocl.cultivation.Car;
+import com.oocl.cultivation.ParkingEntity;
 import com.oocl.cultivation.ParkingLot;
 import com.oocl.cultivation.Ticket;
 import com.oocl.cultivation.exceptions.NotEnoughParkingSlotException;
 import com.oocl.cultivation.exceptions.UnrecognizedParkingTicketException;
-import com.oocl.cultivation.pickParkingLotStrategies.PickParkingLotStrategyInterface;
+import com.oocl.cultivation.pickParkingLotStrategies.PickParkingLotStrategy;
 import com.oocl.cultivation.pickParkingLotStrategies.SequentialStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingBoy {
+public class ParkingBoy implements ParkingEntity {
     protected List<ParkingLot> parkingLotList;
-    private final PickParkingLotStrategyInterface pickParkingLotStrategy;
+    private final PickParkingLotStrategy pickParkingLotStrategy;
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLotList = new ArrayList<>();
@@ -21,7 +22,7 @@ public class ParkingBoy {
         this.pickParkingLotStrategy = new SequentialStrategy();
     }
 
-    protected ParkingBoy(ParkingLot parkingLot, PickParkingLotStrategyInterface pickParkingLotStrategy) {
+    protected ParkingBoy(ParkingLot parkingLot, PickParkingLotStrategy pickParkingLotStrategy) {
         this.parkingLotList = new ArrayList<>();
         this.parkingLotList.add(parkingLot);
         this.pickParkingLotStrategy = pickParkingLotStrategy;

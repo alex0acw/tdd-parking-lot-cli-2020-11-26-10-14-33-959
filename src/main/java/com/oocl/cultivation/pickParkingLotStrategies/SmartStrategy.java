@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class SmartStrategy implements PickParkingLotStrategyInterface {
+public class SmartStrategy implements PickParkingLotStrategy {
     @Override
     public ParkingLot pickParkingLot(List<ParkingLot> parkingLotList) {
         Optional<ParkingLot> parkingLot = parkingLotList.stream().max(Comparator.comparingInt(ParkingLot::getRemainingSpaces));

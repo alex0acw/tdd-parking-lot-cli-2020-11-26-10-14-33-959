@@ -4,7 +4,7 @@ import com.oocl.cultivation.ParkingLot;
 
 import java.util.List;
 
-public class SequentialStrategy implements PickParkingLotStrategyInterface {
+public class SequentialStrategy implements PickParkingLotStrategy {
     @Override
     public ParkingLot pickParkingLot(List<ParkingLot> parkingLotList) {
         for (ParkingLot parkingLot : parkingLotList) {
